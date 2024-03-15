@@ -1,0 +1,28 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout multiple-rows class="slds-box">
+    <!-- Title -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_large">
+      <b class="slds-text-heading_medium">{label.LABEL_Categories}</b>
+    </lightning-layout-item>
+
+    <!-- Categories section -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+      <lightning-layout multiple-rows>
+        <template for:each={categories} for:item="category">
+          <lightning-layout-item
+            key={category.name}
+            size="12"
+            class="slds-var-p-bottom_x-small"
+          >
+            <div data-value={category.name} onclick={handleCategoryClick}>
+              <span class="slds-text-body_regular category-item">
+                {category.name}
+              </span>
+            </div>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

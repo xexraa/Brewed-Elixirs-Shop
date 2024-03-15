@@ -1,0 +1,39 @@
+<template>
+  <lightning-layout class="slds-var-p-around_medium">
+    <!-- Avatar section -->
+    <lightning-layout-item class="slds-var-p-right_small">
+      <lightning-icon
+        icon-name="utility:animal_and_nature"
+        size="medium"
+      ></lightning-icon>
+    </lightning-layout-item>
+
+    <!-- Review section -->
+    <lightning-layout-item size="11">
+      <lightning-layout multiple-rows class="slds-text-body_regular">
+        <lightning-layout-item size="12">
+          <p>{review.firstName} {review.lastName}</p>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="slds-var-p-vertical_x-small">
+          <div class="stars-and-date-container">
+            <div class="stars-container">
+              <template for:each={stars} for:item="star">
+                <div key={star.value} class="star">
+                  <lightning-icon
+                    icon-name="utility:favorite"
+                    size="x-small"
+                    class={star.className}
+                  ></lightning-icon>
+                </div>
+              </template>
+            </div>
+            <p class="date">{displayLocaleDate}</p>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+          <p>{review.description}</p>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

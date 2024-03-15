@@ -1,0 +1,67 @@
+<template>
+  <lightning-layout multiple-rows>
+    <lightning-layout-item
+      size="12"
+      class="slds-var-m-around_large slds-border_top"
+    ></lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      class="slds-var-m-left_xx-large slds-var-p-left_xx-large"
+    >
+      <p class="slds-text-heading_large">{label.LABEL_Opinions}</p>
+    </lightning-layout-item>
+
+    <!-- Add review box -->
+    <lightning-layout-item
+      size="12"
+      class="slds-align_absolute-center slds-var-p-top_medium review-box"
+    >
+      <lightning-layout class="slds-box">
+        <!-- Text section -->
+        <lightning-layout-item size="6" >
+          <lightning-layout multiple-rows class="slds-var-p-right_medium">
+            <lightning-layout-item size="12" class="slds-var-p-bottom_x-small">
+              <p class="slds-text-heading_medium">
+                {label.LABEL_ASK_YouHaveThisProduct}
+              </p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+              <p class="slds-text-body_regular slds-text-color_weak">
+                {label.LABEL_AddFirstReviewFor}&nbsp;{product_name}
+              </p>
+            </lightning-layout-item>
+          </lightning-layout>
+        </lightning-layout-item>
+
+        <!-- Button section -->
+        <lightning-layout-item size="6">
+          <lightning-layout multiple-rows>
+            <lightning-layout-item size="12">
+              <template for:each={stars} for:item="star" for:index="index">
+                <div
+                  key={star.value}
+                  class="star"
+                  data-index={star.value}
+                  onmouseover={handleHover}
+                  onmouseout={handleMouseOut}
+                  onclick={handleClick}
+                >
+                  <lightning-icon
+                    icon-name="utility:favorite"
+                    size="medium"
+                    class={star.className}
+                  ></lightning-icon>
+                </div>
+              </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-var-p-top_medium">
+              <button class="review-button" onclick={openAddReviewModal}>
+                {label.BUTTON_AddFirstReview}
+              </button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

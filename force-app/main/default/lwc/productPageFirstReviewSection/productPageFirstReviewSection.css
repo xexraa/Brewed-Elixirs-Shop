@@ -1,0 +1,47 @@
+.slds-box {
+  padding: 24px;
+}
+
+.rev-container {
+  margin: 0 12%;
+}
+
+.review-box {
+  width: 562px;
+}
+
+.review-button {
+  position: relative;
+  padding: 8px 18px;
+  width: 100%;
+  border: 0px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  background-color: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.2s ease 0s;
+}
+
+.review-button:hover {
+  background-color: rgb(90, 90, 90);
+}
+
+.star {
+  cursor: pointer;
+  display: inline-block;
+  padding-right: 12px;
+}
+
+.star:last-child {
+  padding-right: 0;
+}
+
+.star-filled {
+  --slds-c-icon-color-foreground-default: orange;
+}
+
+.star-unfilled {
+  --slds-c-icon-color-foreground-default: rgb(200, 200, 200);
+}

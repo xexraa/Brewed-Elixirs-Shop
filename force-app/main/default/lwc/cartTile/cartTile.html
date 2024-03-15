@@ -1,0 +1,39 @@
+<template>
+  <lightning-layout class="slds-align_absolute-center slds-var-p-around_small">
+    <lightning-layout-item size="2">
+      <div class="image-container slds-align_absolute-center">
+        <img src={product.value.imageUrl} alt="Item Image" />
+      </div>
+    </lightning-layout-item>
+    <lightning-layout-item size="4">
+      <p class="product-name" onclick={navigateToProduct}>
+        {product.value.name}
+      </p>
+    </lightning-layout-item>
+    <lightning-layout-item alignment-bump="left">
+      <lightning-layout>
+        <lightning-layout-item
+          class="slds-var-p-horizontal_small slds-align_absolute-center"
+        >
+          <p>{product.value.price} {product.value.currencyIsoCode}</p>
+        </lightning-layout-item>
+        <lightning-layout-item
+          class="slds-var-p-horizontal_small slds-align_absolute-center"
+        >
+          <c-select-cmp quantity={product.value.quantity} onselected={handleSelected}></c-select-cmp>
+        </lightning-layout-item>
+        <lightning-layout-item
+          class="slds-var-p-horizontal_small slds-align_absolute-center"
+          onclick={handleTrashClick}
+        >
+          <lightning-icon
+            icon-name="utility:delete"
+            alternative-text="Trash"
+            size="x-small"
+            class="clear-button-container slds-var-p-around_x-small"
+          ></lightning-icon>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

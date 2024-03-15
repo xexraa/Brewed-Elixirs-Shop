@@ -1,0 +1,71 @@
+.rev-container {
+  margin: 0 12%;
+}
+
+.average-number {
+  font-size: 45px;
+  line-height: 56px;
+  color: rgb(26, 26, 26);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.average-total {
+  font-size: 22px;
+  line-height: 28px;
+  color: rgb(148, 148, 148);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.star {
+  display: inline-block;
+  padding-right: 4px;
+}
+
+.star-filled {
+  --slds-c-icon-color-foreground-default: orange;
+}
+
+.star-unfilled {
+  --slds-c-icon-color-foreground-default: rgb(200, 200, 200);
+}
+
+.star-half-filled {
+  --slds-c-icon-color-foreground-default: rgb(254, 211, 132);
+  /* --slds-c-icon-color-background-default: rgb(200, 200, 200); */
+  /* --slds-c-icon-color-background-default: linear-gradient(red, yellow); */
+}
+
+.strip-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.strip {
+  width: 250px;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+  background: rgb(221, 221, 221);
+  display: inline-block;
+}
+
+.review-button {
+  position: relative;
+  padding: 8px 18px;
+  width: 200px;
+  border: 0px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  background-color: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.2s ease 0s;
+}
+
+.review-button:hover {
+  background-color: rgb(90, 90, 90);
+}

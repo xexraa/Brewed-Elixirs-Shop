@@ -1,0 +1,23 @@
+<template>
+  <template lwc:if={isLoading}>
+    <lightning-layout-item size="12" class="slds-align_absolute-center">
+      <c-spinner size="medium"></c-spinner>
+    </lightning-layout-item>
+  </template>
+  <template lwc:else>
+    <div class="slds-text-align_center slds-var-p-top_small">
+      <div onclick={handleOpenCart} class="cart-container">
+        <lightning-icon
+          icon-name="utility:cart"
+          alternative-text="Cart"
+          class="button-icon"
+        >
+        </lightning-icon>
+        <span class="cart-badge" lwc:if={isCartEmpty}>
+          {totalProductsAmount}
+        </span>
+        <p>{cart_label}</p>
+      </div>
+    </div>
+  </template>
+</template>

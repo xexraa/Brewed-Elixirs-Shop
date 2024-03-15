@@ -1,0 +1,10 @@
+<template>
+  <div>
+    <select onchange={handleChange}>
+      <option lwc:if={quantity} value={quantity} selected>{quantity}</option>
+      <template for:each={options} for:item="option">
+        <option key={option} value={option}>{option}</option>
+      </template>
+    </select>
+  </div>
+</template>

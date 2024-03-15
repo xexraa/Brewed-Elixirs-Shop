@@ -1,0 +1,25 @@
+<template>
+  <div class="empty-cart-container">
+    <lightning-layout multiple-rows class="slds-border_top">
+      <lightning-layout-item
+        size="12"
+        class="slds-text-align_center slds-var-p-top_x-large"
+      >
+        <p class="slds-text-heading_large">{title_label}</p>
+      </lightning-layout-item>
+      <lightning-layout-item
+        size="12"
+        class="slds-text-align_center slds-var-p-vertical_medium"
+      >
+        <p class="slds-text-heading_small slds-text-color_weak">{ask_label}</p>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" class="slds-var-p-vertical_x-small">
+        <a href="/s/" class="button-link">{button_label}</a>
+      </lightning-layout-item>
+      <lightning-layout-item
+        size="12"
+        class="slds-border_bottom slds-var-p-top_xx-large"
+      ></lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>

@@ -1,0 +1,20 @@
+.button-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.button-icon:hover {
+  transform: scale(1.1);
+}
+
+.button-icon:active {
+  transform: scale(0.9);
+  transition-duration: 0s;
+}
+
+.category-link {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}

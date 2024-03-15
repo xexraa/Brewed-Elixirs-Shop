@@ -1,0 +1,43 @@
+<template>
+  <lightning-layout
+    multiple-rows
+    class="card-container"
+    onclick={navigateToProductDetails}
+  >
+    <lightning-layout-item size="12" class="slds-clearfix">
+      <lightning-icon
+        icon-name="utility:heart"
+        alternative-text="Heart"
+        size="small"
+        class="heart-icon slds-float_right slds-var-p-top_medium slds-var-p-right_medium button-icon"
+        onclick={handleHeartClick}
+      ></lightning-icon>
+    </lightning-layout-item>
+    <lightning-layout-item size="12" class="slds-align_absolute-center">
+      <div class="image-container">
+        <img src={product.imageUrl} alt="Item Image" />
+      </div>
+    </lightning-layout-item>
+    <lightning-layout-item size="12" class="slds-var-p-top_x-small">
+      <p class="slds-var-p-left_medium">{product.name}</p>
+    </lightning-layout-item>
+    <lightning-layout-item size="12" class="slds-var-p-top_large">
+      <lightning-layout class="price-and-icon-container">
+        <lightning-layout-item size="6">
+          <p class="slds-var-p-left_medium slds-var-p-bottom_medium">
+            {product.price} {product.currencyIsoCode}
+          </p>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" class="cart-icon-item">
+          <lightning-icon
+            icon-name="utility:cart"
+            alternative-text="Cart"
+            size="small"
+            class="cart-icon slds-var-p-bottom_medium slds-var-p-right_medium button-icon"
+            onclick={handleClick}
+          ></lightning-icon>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

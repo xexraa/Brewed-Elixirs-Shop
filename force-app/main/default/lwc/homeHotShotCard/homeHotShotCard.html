@@ -1,0 +1,67 @@
+<template>
+  <lightning-layout multiple-rows class="hot-shot-container" onclick={navigateToProduct}>
+    <lightning-layout-item size="8">
+      <p class="slds-text-heading_large"><b>{label.LABEL_HotShot}</b></p>
+    </lightning-layout-item>
+    <lightning-layout-item size="4">
+      <div class="discount-box slds-text-heading_medium">
+        <p>{label.LABEL_Save}</p>
+        <p>{selectedDiscountLabel}</p>
+      </div>
+    </lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      class="slds-var-p-top_small slds-align_absolute-center image-container"
+    >
+      <img src={discountProductImageUrl} />
+    </lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      class="slds-text-align_center slds-text-heading_medium"
+    >
+      <p>{discountProductName}</p>
+    </lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      class="slds-text-align_center slds-text-heading_large"
+    >
+      <b>{discountProductPrice} {discountProductCurrency}</b>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <p class="slds-text-body_regular">
+        <span class="strikethrough">
+          {discountProductOriginalPrice} {discountProductCurrency}&nbsp;
+        </span>
+        - {label.LABEL_RegularPrice}
+      </p>
+    </lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      padding="around-small"
+      class="slds-text-align_center"
+    >
+      <p>{label.LABEL_OfferEnds}:</p>
+    </lightning-layout-item>
+    <lightning-layout-item size="12">
+      <div class="countdown-container">
+        <!-- Hours -->
+        <div class="countdown-item">
+          <div class="countdown-box">{hours}</div>
+          <p class="countdown-label">{label.LABEL_Hour}</p>
+        </div>
+        <p class="separator">:</p>
+        <!-- Minutes -->
+        <div class="countdown-item">
+          <div class="countdown-box">{minutes}</div>
+          <p class="countdown-label">{label.LABEL_Min}</p>
+        </div>
+        <p class="separator">:</p>
+        <!-- Seconds -->
+        <div class="countdown-item">
+          <div class="countdown-box">{seconds}</div>
+          <p class="countdown-label">{label.LABEL_Sec}</p>
+        </div>
+      </div>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

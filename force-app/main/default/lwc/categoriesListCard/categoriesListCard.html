@@ -1,0 +1,21 @@
+<template>
+  <lightning-layout multiple-rows>
+    <lightning-layout-item size="12">
+      <b class="slds-text-heading_large">{label.LABEL_Categories}</b>
+    </lightning-layout-item>
+    <lightning-layout-item size="12" class="slds-var-p-vertical_xx-small">
+      <p class="slds-text-color_weak slds-text-heading_small">
+        {label.LABEL_In} {category}
+      </p>
+    </lightning-layout-item>
+    <lightning-layout-item size="12" class="slds-var-p-top_medium">
+      <lightning-layout multiple-rows>
+        <template for:each={selectedCategory} for:item="subCategory">
+          <lightning-layout-item size="4" key={subCategory.name}>
+            <c-category-tile category={category} subcategory={subCategory}></c-category-tile>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

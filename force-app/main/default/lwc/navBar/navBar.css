@@ -1,0 +1,23 @@
+.logo {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}
+
+.button-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.button-icon:hover {
+  transform: scale(1.1);
+}
+
+.button-icon:active {
+  transform: scale(0.9);
+  transition-duration: 0s;
+}
+
+.slds-border_left {
+  margin-top: 10px;
+}

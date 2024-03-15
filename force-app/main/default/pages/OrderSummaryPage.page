@@ -1,0 +1,142 @@
+<apex:page controller="OrderSummaryPageController" renderAs="pdf" standardStylesheets="false" applyBodyTag="false">
+    <head>
+        <style>
+            body, html {
+                padding: 0px;
+                margin: 0px;
+            }
+            table.container {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table.container td {
+                vertical-align: center;
+                padding: 8px;
+            }
+            .left-div, .right-div {
+                width: 50%;
+            }
+            .right-div {
+                text-align: right;
+            }
+            .heading {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .sizing-x_small {
+                padding: 0px 2px;
+                margin: 0px;
+            }
+            .summary-box {
+                background-color: rgb(243, 243, 243);
+                border-radius: 10px;
+                border: 1px solid rgb(114, 181, 248);
+                height: 50px;
+                text-align: center;
+            }
+            .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            }
+            .custom-table th,
+            .custom-table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            .custom-table th {
+                background-color: #f2f2f2;
+            }
+            .custom-table th:first-child,
+            .custom-table td:first-child {
+                border-left: none;
+            }
+            .custom-table th:last-child,
+            .custom-table td:last-child {
+                border-right: none;
+            }
+        </style>
+    </head>
+
+    <!-- Header -->
+    <table class="container">
+        <tr>
+            <td class="left-div">
+                <div>
+                    <p><span class="heading">{!$Label.LABEL_Order}</span> {!$Label.SHORTCUT_Nr} {!orderId}</p>
+                    <p style="margin-top: -15px;">{!$Label.SHORTCUT_Of} <span style="font-size: 16px">{!startDate}</span></p>
+                </div>
+            </td>
+            <td class="right-div">
+                <div>
+                    <apex:image url="{!$Resource.brewedLogo}" width="300" height="auto"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Personal information -->
+    <table class="container" style="margin-top:120px;">
+        <tr>
+            <td class="left-div">
+                <div>
+                    <p class="sizing-x_small">{!$Label.LABEL_Seller}:</p>
+                    <p class="sizing-x_small">{!$Label.BREWED_Name}</p>
+                    <p class="sizing-x_small">{!$Label.BREWED_Street}</p>
+                    <p class="sizing-x_small">{!$Label.BREWED_PostCodeAndCity}</p>
+                </div>
+            </td>
+            <td class="right-div">
+                <div style="padding-left:75px;text-align:left;">
+                    <p class="sizing-x_small">{!firstName} {!lastName}</p>
+                    <p class="sizing-x_small">{!street}</p>
+                    <p class="sizing-x_small">{!postCode} {!city}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Customer number -->
+    <table class="container" style="margin-top:25px;">
+        <tr>
+            <td class="left-div">
+                <div>
+                    <p>{!$Label.LABEL_CustomerNumber}: <b>{!contactId}</b></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Order items detail -->
+    <apex:pageBlock title="{!$LABEL.LABEL_OrderDetails}">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>{!$Label.LABEL_ProductName}</th>
+                    <th>{!$Label.LABEL_Quantity}</th>
+                    <th>{!$Label.LABEL_UnitPrice}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!orderItemsList}" var="item">
+                    <tr>
+                        <td>{!item.Product2.Name}</td>
+                        <td style="text-align:center;">{!item.Quantity}</td>
+                        <td>{!item.UnitPrice} <span style="font-size:12px;">{!currencyIsoCode}</span></td>
+                    </tr>
+                </apex:repeat>
+            </tbody>
+        </table>
+    </apex:pageBlock>
+
+    <table class="container" style="margin-top:60px;">
+        <tr>
+            <td class="left-div"></td>
+            <td class="right-div">
+                <div class="summary-box">
+                    <p>{!$Label.LABEL_TotalPaid}: <b>{!totalAmount}</b> {!currencyIsoCode}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</apex:page>

@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:themeLayout">
+  <aura:attribute name="isLoading" type="Boolean" default="true" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:if isTrue="{!v.isLoading}">
+    <lightning:spinner alternativeText="Loading" size="medium" />
+  </aura:if>
+
+  <lightning:layout multipleRows="true">
+    <!-- Navbar -->
+    <lightning:layoutItem size="12" class="slds-var-p-bottom_small">
+      <c:navBar></c:navBar>
+    </lightning:layoutItem>
+
+    <!-- Main Content Body -->
+    <lightning:layoutItem size="12">
+      <div>{!v.body}</div>
+    </lightning:layoutItem>
+  </lightning:layout>
+</aura:component>

@@ -1,0 +1,33 @@
+.cart-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.button-icon:hover {
+  transform: scale(1.1);
+}
+
+.button-icon:active {
+  transform: scale(0.9);
+  transition-duration: 0s;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #2197ff;
+  color: #fff;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 18px;
+}

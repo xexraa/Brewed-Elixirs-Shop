@@ -1,0 +1,40 @@
+<template>
+  <lightning-layout
+    multiple-rows
+    class="orders-page-container slds-var-p-top_medium"
+  >
+    <template lwc:if={isLoading}>
+      <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <c-spinner size="medium"></c-spinner>
+      </lightning-layout-item>
+    </template>
+    <template lwc:else>
+      <template lwc:if={isOrdersFullyLoaded}>
+        <template lwc:if={isOrdersEmpty}>
+          <lightning-layout-item size="12" class="slds-align_absolute-center">
+            <c-info-labels-cmp
+              title_label={label.LABEL_EmptyOrders}
+              ask_label={label.LABEL_ASK_Inspiration}
+              button_label={label.BUTTON_HomePage}
+            ></c-info-labels-cmp>
+          </lightning-layout-item>
+        </template>
+        <template lwc:else>
+          <lightning-layout-item size="12" class="slds-var-p-vertical_medium">
+            <p class="slds-text-heading_large">{label.LABEL_YourOrders}</p>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <template for:each={orders} for:item="order">
+              <div key={order.Id} class="slds-var-p-bottom_small">
+                <c-order-tile-with-horizontal-view
+                  order={order}
+                  nr_label={label.SHORTCUT_Nr}
+                ></c-order-tile-with-horizontal-view>
+              </div>
+            </template>
+          </lightning-layout-item>
+        </template>
+      </template>
+    </template>
+  </lightning-layout>
+</template>

@@ -1,0 +1,147 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={isLoading}>
+    <c-spinner size="medium"></c-spinner>
+  </template>
+  <template lwc:else>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-modal="true"
+      aria-labelledby="modal-heading-01"
+      class="slds-modal slds-fade-in-open slds-modal_small"
+    >
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <div class="header-content custom-header">
+            <b
+              id="modal-heading-01"
+              class="slds-text-heading_medium slds-hyphenate"
+            >
+              {label.MODAL_TITLE_AddReview}
+            </b>
+            <button class="x-button" onclick={closeModal}>X</button>
+          </div>
+          <div class="slds-text-align_center custom-header_2">
+            <div class="img-container slds-var-p-horizontal_medium">
+              <img src={img_url} alt="product image" />
+            </div>
+            <p>{product_name}</p>
+          </div>
+        </div>
+        <div
+          class="slds-modal__content slds-var-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <lightning-layout multiple-rows>
+            <!-- Stars -->
+            <lightning-layout-item
+              size="12"
+              padding="around-small"
+              class="slds-border_bottom"
+            >
+              <lightning-layout multiple-rows>
+                <lightning-layout-item
+                  size="12"
+                  class="slds-align_absolute-center"
+                >
+                  <p class="slds-text-heading_small">
+                    {label.LABEL_YourProductRating}
+                  </p>
+                </lightning-layout-item>
+                <lightning-layout-item
+                  size="12"
+                  class="slds-align_absolute-center slds-var-p-vertical_medium"
+                >
+                  <template for:each={stars} for:item="star" for:index="index">
+                    <div
+                      key={star.value}
+                      class="star"
+                      data-index={star.value}
+                      onmouseover={handleHover}
+                      onmouseout={handleMouseOut}
+                      onclick={handleClick}
+                    >
+                      <lightning-icon
+                        icon-name="utility:favorite"
+                        size="medium"
+                        class={star.className}
+                      ></lightning-icon>
+                    </div>
+                  </template>
+                </lightning-layout-item>
+                <lightning-layout-item
+                  size="12"
+                  class="slds-align_absolute-center"
+                  lwc:if={errorMessage}
+                >
+                  <lightning-icon
+                    icon-name="utility:error"
+                    size="xx-small"
+                    class="error-icon slds-var-p-right_xx-small"
+                  ></lightning-icon>
+                  <p class="slds-text-color_error">{errorMessage}</p>
+                </lightning-layout-item>
+              </lightning-layout>
+            </lightning-layout-item>
+
+            <!-- Info labels -->
+            <lightning-layout-item
+              size="12"
+              class="slds-var-p-top_large slds-var-p-horizontal_small"
+            >
+              <lightning-layout multiple-rows>
+                <lightning-layout-item size="12">
+                  <b class="slds-text-heading_small">
+                    {label.LABEL_INFO_WriteAboutProduct}
+                  </b>
+                </lightning-layout-item>
+                <lightning-layout-item
+                  size="12"
+                  class="slds-var-p-top_xx-small"
+                >
+                  <p class="slds-text-color_weak">
+                    {label.LABEL_INFO_BeforeAddReview}
+                  </p>
+                </lightning-layout-item>
+              </lightning-layout>
+            </lightning-layout-item>
+
+            <!-- Description -->
+            <lightning-layout-item
+              size="12"
+              class="slds-var-p-bottom_large slds-var-p-horizontal_small slds-var-p-top_large"
+            >
+              <label for="description" class="slds-form-element__label">
+                {label.LABEL_ASK_AboutProduct}&nbsp;
+                <span class="slds-text-color_weak">
+                  ({label.LABEL_Optional})
+                </span>
+              </label>
+              <div class="custom-input-container">
+                <textarea
+                  id="description"
+                  data-name="description"
+                  onchange={handleChange}
+                  class="custom-input validate"
+                  maxlength="1000"
+                ></textarea>
+              </div>
+            </lightning-layout-item>
+
+            <!-- Add review button -->
+            <lightning-layout-item
+              size="12"
+              class="slds-border_top slds-var-p-horizontal_small slds-var-p-top_small"
+            >
+              <button class="save-button slds-float_right" onclick={handleSave}>
+                {label.BUTTON_AddReview}
+              </button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+</template>

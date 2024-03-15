@@ -1,0 +1,48 @@
+.image-container {
+  width: auto;
+  height: 433px;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cart-button-icon {
+  --slds-c-icon-color-foreground-default: white;
+}
+
+.cart-button:hover {
+  background-color: #0f3910;
+}
+
+.cart-button {
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: normal;
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+  width: 100%;
+  height: 40px;
+  padding: 0px 8px;
+  background: rgb(17, 158, 0);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.3s ease;
+}
+
+.cart-button-name {
+  margin-left: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.layout-item {
+  display: flex;
+  align-items: center;
+}

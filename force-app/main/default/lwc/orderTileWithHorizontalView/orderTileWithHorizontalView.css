@@ -1,0 +1,16 @@
+.slds-box {
+  padding: 0;
+}
+
+.custom-box {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.left_container-bg {
+  background-color: rgb(240, 240, 240);
+}
+
+.centered-container {
+  margin: auto;
+}

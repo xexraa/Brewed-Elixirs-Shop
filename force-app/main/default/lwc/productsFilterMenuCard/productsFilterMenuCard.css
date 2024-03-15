@@ -1,0 +1,53 @@
+.category-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.category-item:hover {
+  background-color: #f2f2f2;
+}
+
+.category-checkbox {
+  margin-right: 8px;
+}
+
+.category-label {
+  flex: 1;
+}
+
+.price-input-container input[type="number"]::-webkit-inner-spin-button,
+.price-input-container input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price-input-container {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+}
+
+.price-input-container input::placeholder {
+  text-align: center;
+}
+
+.box {
+  height: 100%;
+  width: 80%;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border: 1px solid #d8dde6;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.price-input-container input:focus {
+  outline: none;
+}
+
+.error {
+  border: 1px solid red;
+}

@@ -1,0 +1,21 @@
+.image-container {
+  height: 116px;
+  width: 138px;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card-container {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dedcdc;
+  border-radius: 5px;
+}

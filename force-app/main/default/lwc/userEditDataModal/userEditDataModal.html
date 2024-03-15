@@ -1,0 +1,134 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={isLoading}>
+    <c-spinner size="medium"></c-spinner>
+  </template>
+  <template lwc:else>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-modal="true"
+      aria-labelledby="modal-heading-01"
+      class="slds-modal slds-fade-in-open slds-modal_small"
+    >
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <div class="header-content custom-header">
+            <b
+              id="modal-heading-01"
+              class="slds-text-heading_medium slds-hyphenate"
+            >
+              {label.MODAL_TITLE_YourAddress}
+            </b>
+            <button class="x-button" onclick={closeModal}>X</button>
+          </div>
+        </div>
+        <div
+          class="slds-modal__content slds-var-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <!-- Address -->
+          <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-small">
+              <lightning-layout multiple-rows>
+                <!-- Mailing Street -->
+                <lightning-layout-item
+                  size="12"
+                  class="slds-var-p-bottom_x-small"
+                >
+                  <label for="street" class="slds-form-element__label">
+                    <span style="color: red">*</span>
+                    &nbsp;{label.LABEL_MailingStreet}
+                  </label>
+                  <div class="custom-input-container">
+                    <input
+                      type="text"
+                      id="street"
+                      data-name="street"
+                      value={street}
+                      onchange={handleChange}
+                      class="custom-input validate"
+                      required
+                    />
+                  </div>
+                </lightning-layout-item>
+
+                <!-- Mailing City -->
+                <lightning-layout-item
+                  size="8"
+                  class="slds-var-p-bottom_x-small"
+                >
+                  <label for="city" class="slds-form-element__label">
+                    <span style="color: red">*</span>
+                    &nbsp;{label.LABEL_MailingCity}
+                  </label>
+                  <div class="custom-input-container">
+                    <input
+                      type="text"
+                      id="city"
+                      data-name="city"
+                      value={city}
+                      onchange={handleChange}
+                      class="custom-input validate"
+                      required
+                    />
+                  </div>
+                </lightning-layout-item>
+
+                <!-- Postal Code -->
+                <lightning-layout-item
+                  size="4"
+                  class="slds-var-p-bottom_x-small slds-var-p-left_small"
+                >
+                  <label for="postal_code" class="slds-form-element__label">
+                    <span style="color: red">*</span>
+                    &nbsp;{label.LABEL_PostalCode}
+                  </label>
+                  <div class="custom-input-container">
+                    <input
+                      type="text"
+                      id="postal_code"
+                      data-name="postal_code"
+                      value={postal_code}
+                      onchange={handleChange}
+                      class="custom-input validate"
+                      required
+                      maxlength={postalCodeMaxLength}
+                    />
+                  </div>
+                </lightning-layout-item>
+
+                <!-- Mailing Country -->
+                <lightning-layout-item size="12">
+                  <label for="country" class="slds-form-element__label">
+                    <span style="color: red">*</span>
+                    &nbsp;{label.LABEL_MailingCountry}
+                  </label>
+                  <div class="custom-input-container">
+                    <input
+                      type="text"
+                      id="country"
+                      data-name="country"
+                      value={country}
+                      onchange={handleChange}
+                      class="custom-input validate"
+                      required
+                    />
+                  </div>
+                </lightning-layout-item>
+              </lightning-layout>
+            </lightning-layout-item>
+
+            <!-- Save button -->
+            <lightning-layout-item size="12" padding="around-small">
+              <button class="save-button" onclick={handleSave}>
+                {label.BUTTON_Save}
+              </button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+</template>

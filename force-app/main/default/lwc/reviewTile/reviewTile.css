@@ -1,0 +1,26 @@
+.star {
+  display: inline-block;
+  padding-right: 2px;
+}
+
+.star-filled {
+  --slds-c-icon-color-foreground-default: grey;
+}
+
+.star-unfilled {
+  --slds-c-icon-color-foreground-default: rgb(200, 200, 200);
+}
+
+.stars-and-date-container {
+  display: flex;
+  align-items: center;
+}
+
+.stars-container {
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.date {
+  padding-top: 5px;
+}

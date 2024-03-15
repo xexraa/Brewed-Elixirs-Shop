@@ -1,0 +1,25 @@
+<template>
+  <lightning-layout>
+    <template lwc:if={isLoading}>
+      <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <c-spinner size="medium"></c-spinner>
+      </lightning-layout-item>
+    </template>
+    <template lwc:else>
+      <!-- Hot shot -->
+      <lightning-layout-item size="3" class="border-container">
+        <c-home-hot-shot-card
+          lwc:if={discountProduct}
+          product={discountProduct}
+        ></c-home-hot-shot-card>
+      </lightning-layout-item>
+
+      <!-- Products -->
+      <lightning-layout-item size="9" class="slds-var-p-left_xx-large">
+        <c-home-products-list-card
+          products={products}
+        ></c-home-products-list-card>
+      </lightning-layout-item>
+    </template>
+  </lightning-layout>
+</template>

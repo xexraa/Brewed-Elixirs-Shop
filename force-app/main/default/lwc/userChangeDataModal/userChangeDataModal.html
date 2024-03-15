@@ -1,0 +1,80 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={isLoading}>
+    <c-spinner size="medium"></c-spinner>
+  </template>
+  <template lwc:else>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-modal="true"
+      aria-labelledby="modal-heading-01"
+      class="slds-modal slds-fade-in-open slds-modal_small"
+    >
+      <div class="slds-modal__container">
+        <div class="slds-modal__header">
+          <div class="header-content custom-header">
+            <b
+              id="modal-heading-01"
+              class="slds-text-heading_medium slds-hyphenate"
+            >
+              {label.MODAL_TITLE_YourData}
+            </b>
+            <button class="x-button" onclick={closeModal}>X</button>
+          </div>
+        </div>
+        <div
+          class="slds-modal__content slds-var-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <!-- Email -->
+          <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" padding="around-small">
+              <label for="email" class="slds-form-element__label">
+                <span style="color: red">*</span> {label.LABEL_EmailAddress}
+              </label>
+              <div class="custom-input-container">
+                <input
+                  type="email"
+                  id="email"
+                  data-name="email"
+                  value={email}
+                  onchange={handleChange}
+                  class="custom-input validate"
+                  required
+                />
+              </div>
+            </lightning-layout-item>
+
+            <!-- Phone -->
+            <lightning-layout-item size="12" padding="around-small">
+              <label for="phone" class="slds-form-element__label">
+                <span style="color: red">*</span> {label.LABEL_PhoneNumber}
+              </label>
+              <div class="custom-input-container">
+                <input
+                  type="tel"
+                  id="phone"
+                  data-name="phone"
+                  value={phone}
+                  oninput={handleChange}
+                  onkeypress={keyPressCheck}
+                  class="custom-input validate"
+                  required
+                />
+              </div>
+            </lightning-layout-item>
+
+            <!-- Save button -->
+            <lightning-layout-item size="12" padding="around-small">
+              <button class="save-button" onclick={handleSave}>
+                {label.BUTTON_Save}
+              </button>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+  </template>
+</template>

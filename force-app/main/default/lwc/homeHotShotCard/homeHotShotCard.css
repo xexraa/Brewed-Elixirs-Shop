@@ -1,0 +1,70 @@
+.image-container {
+  width: 360px;
+  height: 330px;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.hot-shot-container {
+  padding: 1.5rem;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #0070d2, #000000, #800080) 1;
+  border-image-slice: 1;
+  cursor: pointer;
+}
+
+.discount-box {
+  background-color: #7a7979;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+}
+
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-box {
+  width: 56px;
+  height: 56px;
+  background-color: #e6e4e4;
+  font-size: 26px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 56px;
+}
+
+.countdown-label {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 1px;
+  color: #181818;
+}
+
+.separator {
+  font-size: 30px;
+  margin: 0 5px;
+  margin-top: -25px;
+}
+
+.strikethrough {
+  font-size: 18px;
+  line-height: 24px;
+  color: rgb(68, 68, 68);
+  font-weight: normal;
+  text-decoration: line-through;
+}

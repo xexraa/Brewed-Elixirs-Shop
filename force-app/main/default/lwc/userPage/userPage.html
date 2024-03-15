@@ -1,0 +1,197 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout multiple-rows class="settings-container">
+    <template lwc:if={isLoading}>
+      <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <c-spinner size="medium"></c-spinner>
+      </lightning-layout-item>
+    </template>
+    <template lwc:else>
+      <!-- Labels -->
+      <lightning-layout-item size="12" class="slds-var-p-vertical_medium">
+        <p class="slds-text-heading_large">{label.LABEL_AccountSettings}</p>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+        <p class="slds-text-heading_medium">{label.LABEL_AccountInformation}</p>
+      </lightning-layout-item>
+      <lightning-layout-item size="12">
+        <lightning-layout multiple-rows>
+          <!-- First & Last Name -->
+          <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+            <label for="name" class="slds-form-element__label">
+              {label.LABEL_YourName}
+            </label>
+            <div class="custom-input-container">
+              <input
+                type="text"
+                id="name"
+                value={fullName}
+                readonly={isReadOnly}
+                class="custom-input"
+              />
+            </div>
+          </lightning-layout-item>
+
+          <!-- Email -->
+          <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+            <label for="email" class="slds-form-element__label">
+              {label.LABEL_EmailAddress}
+            </label>
+            <div class="custom-input-container">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                readonly={isReadOnly}
+                class="custom-input"
+              />
+              <div class="custom-button-container">
+                <button class="custom-button" onclick={openChangeModal}>
+                  {label.LABEL_Change}
+                </button>
+              </div>
+            </div>
+          </lightning-layout-item>
+
+          <!-- Phone -->
+          <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+            <label for="phone" class="slds-form-element__label">
+              {label.LABEL_PhoneNumber}
+            </label>
+            <div class="custom-input-container">
+              <input
+                type="number"
+                id="phone"
+                value={phone}
+                readonly={isReadOnly}
+                class="custom-input"
+              />
+              <div class="custom-button-container">
+                <button class="custom-button" onclick={openChangeModal}>
+                  {label.LABEL_Change}
+                </button>
+              </div>
+            </div>
+          </lightning-layout-item>
+
+          <!-- Address -->
+          <lightning-layout-item size="12" class="slds-var-p-top_small">
+            <lightning-layout multiple-rows>
+              <lightning-layout-item
+                size="12"
+                class="slds-var-p-bottom_x-small"
+              >
+                <p class="slds-text-heading_small">
+                  {label.LABEL_YourAddress}
+                  <span class="custom-button-container">
+                    <button class="custom-button-edit" onclick={openEditModal}>
+                      {label.LABEL_Edit}
+                    </button>
+                  </span>
+                </p>
+              </lightning-layout-item>
+
+              <!-- Mailing Street -->
+              <lightning-layout-item
+                size="12"
+                class="slds-var-p-bottom_x-small"
+              >
+                <label for="street" class="slds-form-element__label">
+                  {label.LABEL_MailingStreet}
+                </label>
+                <div class="custom-input-container">
+                  <input
+                    type="text"
+                    id="street"
+                    data-name="street"
+                    value={street}
+                    onchange={handleChange}
+                    readonly={isReadOnly}
+                    class="custom-input validate"
+                  />
+                </div>
+              </lightning-layout-item>
+
+              <!-- Mailing City -->
+              <lightning-layout-item size="8" class="slds-var-p-bottom_x-small">
+                <label for="city" class="slds-form-element__label">
+                  {label.LABEL_MailingCity}
+                </label>
+                <div class="custom-input-container">
+                  <input
+                    type="text"
+                    id="city"
+                    data-name="city"
+                    value={city}
+                    onchange={handleChange}
+                    readonly={isReadOnly}
+                    class="custom-input validate"
+                  />
+                </div>
+              </lightning-layout-item>
+
+              <!-- Postal Code -->
+              <lightning-layout-item
+                size="4"
+                class="slds-var-p-bottom_x-small slds-var-p-left_small"
+              >
+                <label for="postalCode" class="slds-form-element__label">
+                  {label.LABEL_PostalCode}
+                </label>
+                <div class="custom-input-container">
+                  <input
+                    type="text"
+                    id="postalCode"
+                    data-name="postalCode"
+                    value={postalCode}
+                    onchange={handleChange}
+                    readonly={isReadOnly}
+                    class="custom-input validate"
+                  />
+                </div>
+              </lightning-layout-item>
+
+              <!-- Mailing Country -->
+              <lightning-layout-item
+                size="12"
+                class="slds-var-p-bottom_x-small"
+              >
+                <label for="country" class="slds-form-element__label">
+                  {label.LABEL_MailingCountry}
+                </label>
+                <div class="custom-input-container">
+                  <input
+                    type="text"
+                    id="country"
+                    data-name="country"
+                    value={country}
+                    onchange={handleChange}
+                    readonly={isReadOnly}
+                    class="custom-input validate"
+                  />
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+      <c-user-change-data-modal
+        if:true={isChangeModalVisible}
+        contact_id={contactId}
+        email={email}
+        phone={phone}
+        onclosemodal={closeChangeModal}
+      ></c-user-change-data-modal>
+
+      <c-user-edit-data-modal
+        if:true={isEditModalVisible}
+        contact_id={contactId}
+        street={street}
+        city={city}
+        postal_code={postalCode}
+        country={country}
+        onclosemodal={closeEditModal}
+      ></c-user-edit-data-modal>
+    </template>
+  </lightning-layout>
+</template>

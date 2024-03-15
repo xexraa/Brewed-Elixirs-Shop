@@ -1,0 +1,28 @@
+<template>
+  <lightning-layout>
+    <lightning-layout-item size="6" class="slds-align_absolute-center">
+      <div
+        class="slds-text-align_center slds-var-p-top_small"
+        data-category="Coffee"
+        onclick={navigateToCategories}
+      >
+        <div class="category-link slds-align_absolute-center button-icon">
+          <img src={coffee_icon} alt="Coffee Icon" />
+        </div>
+        <p>{coffee_label}</p>
+      </div>
+    </lightning-layout-item>
+    <lightning-layout-item size="6" class="slds-align_absolute-center">
+      <div
+        class="slds-text-align_center slds-var-p-top_small"
+        data-category="Tea"
+        onclick={navigateToCategories}
+      >
+        <div class="category-link slds-align_absolute-center button-icon">
+          <img src={tea_icon} alt="Tea Icon" />
+        </div>
+        <p>{tea_label}</p>
+      </div>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

@@ -1,0 +1,72 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout class="slds-align_absolute-center">
+    <!-- Logo -->
+    <lightning-layout-item size="2">
+      <img
+        src={icon.brewedLogo}
+        alt="Logo"
+        class="logo"
+        onclick={handleLogoClick}
+      />
+    </lightning-layout-item>
+
+    <!-- Menu Items -->
+    <lightning-layout-item size="2">
+      <c-nav-bar-items-menu
+        coffee_icon={icon.coffeeIcon}
+        coffee_label={label.LABEL_Coffees}
+        tea_icon={icon.teaIcon}
+        tea_label={label.LABEL_Teas}
+      ></c-nav-bar-items-menu>
+    </lightning-layout-item>
+
+    <!-- Search Bar -->
+    <lightning-layout-item size="6" padding="around-small">
+      <c-search-bar
+        placeholder_label={label.LABEL_SearchPlaceholder}
+      ></c-search-bar>
+    </lightning-layout-item>
+
+    <!-- User Menu -->
+    <lightning-layout-item size="2" class="slds-border_left">
+      <lightning-layout>
+        <!-- Current Logged-In User Full Name -->
+        <lightning-layout-item class="slds-align_absolute-center">
+          <div class="slds-text-align_center slds-var-p-top_small">
+            <lightning-icon
+              icon-name="utility:user"
+              alternative-text="User"
+              title={currentUserFullName}
+              class="button-icon"
+              onclick={navigateToUserPage}
+            ></lightning-icon>
+            <p>{label.LABEL_YourAccount}</p>
+          </div>
+        </lightning-layout-item>
+
+        <!-- Orders -->
+        <lightning-layout-item class="slds-align_absolute-center">
+          <div class="slds-text-align_center slds-var-p-top_small">
+            <lightning-icon
+              icon-name="utility:fulfillment_order"
+              alternative-text="Order"
+              title={label.LABEL_CheckOrders}
+              class="button-icon"
+              onclick={navigateToOrdersPage}
+            ></lightning-icon>
+            <p>{label.LABEL_Orders}</p>
+          </div>
+        </lightning-layout-item>
+
+        <!-- Cart -->
+        <lightning-layout-item class="slds-align_absolute-center">
+          <c-nav-bar-cart
+            cart_label={label.LABEL_Cart}
+            toast_error_label={label.TOAST_Error}
+          ></c-nav-bar-cart>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

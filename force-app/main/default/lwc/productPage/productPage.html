@@ -1,0 +1,161 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout
+    multiple-rows
+    class="slds-var-m-horizontal_xx-large slds-var-p-top_large"
+  >
+    <template lwc:if={isLoading}>
+      <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <c-spinner size="medium"></c-spinner>
+      </lightning-layout-item>
+    </template>
+    <template lwc:else>
+      <!-- Images section -->
+      <lightning-layout-item size="5">
+        <lightning-layout multiple-rows>
+          <lightning-layout-item size="12" class="slds-align_absolute-center">
+            <div class="image-container">
+              <img src={imageUrl} alt="Item Image" />
+            </div>
+          </lightning-layout-item>
+          <!-- TODO: add more images -->
+          <lightning-layout-item size="12"></lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+
+      <!-- Details section -->
+      <lightning-layout-item size="6">
+        <lightning-layout multiple-rows>
+          <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+            <p class="slds-text-heading_large">{name}</p>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout>
+              <lightning-layout-item
+                size="6"
+                class="slds-border_top slds-var-m-right_xx-large"
+              >
+                <lightning-layout
+                  multiple-rows
+                  class="slds-text-body_regular slds-var-p-top_small"
+                >
+                  <!-- Mark -->
+                  <lightning-layout-item
+                    size="12"
+                    class="slds-var-p-bottom_x-small"
+                  >
+                    <p>
+                      <span class="slds-text-color_weak">
+                        {label.LABEL_Mark}:&nbsp;
+                      </span>
+                      {mark}
+                    </p>
+                  </lightning-layout-item>
+
+                  <!-- Weight -->
+                  <lightning-layout-item
+                    size="12"
+                    class="slds-var-p-bottom_x-small"
+                  >
+                    <p>
+                      <span class="slds-text-color_weak">
+                        {label.LABEL_Weight}:&nbsp;
+                      </span>
+                      {weight}
+                    </p>
+                  </lightning-layout-item>
+
+                  <!-- Taste -->
+                  <lightning-layout-item
+                    size="12"
+                    class="slds-var-p-bottom_x-small"
+                  >
+                    <p>
+                      <span class="slds-text-color_weak">
+                        {label.LABEL_Taste}:&nbsp;
+                      </span>
+                      {taste}
+                    </p>
+                  </lightning-layout-item>
+
+                  <!-- Description -->
+                  <lightning-layout-item
+                    size="12"
+                    class="slds-var-p-bottom_x-small"
+                  >
+                    <p>
+                      <span class="slds-text-color_weak">
+                        {label.LABEL_Description}:&nbsp;
+                      </span>
+                      {description}
+                    </p>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+              <lightning-layout-item size="6" class="slds-box">
+                <lightning-layout multiple-rows>
+                  <lightning-layout-item
+                    size="12"
+                    class="slds-clearfix slds-var-p-bottom_medium"
+                  >
+                    <p class="slds-float_right slds-text-heading_large">
+                      {price} {currencyIsoCode}
+                    </p>
+                  </lightning-layout-item>
+                  <lightning-layout-item size="12" class="layout-item">
+                    <c-select-cmp
+                      onselected={handleSelected}
+                      class="slds-var-p-right_small"
+                      size="medium"
+                    ></c-select-cmp>
+
+                    <button class="cart-button" onclick={handleAddToCart}>
+                      <span class="cart-button-icon">
+                        <lightning-icon
+                          icon-name="utility:cart"
+                          alternative-text="Cart"
+                          size="small"
+                          class="slds-button__icon slds-button__icon_left slds-var-p-right_large"
+                        ></lightning-icon>
+                      </span>
+                      <span class="cart-button-name">
+                        {label.LABEL_AddToCart}
+                      </span>
+                    </button>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+
+      <!-- Reviews section -->
+      <template lwc:if={isReviewsEmpty}>
+        <lightning-layout-item size="12" class="slds-var-m-top_large">
+          <c-product-page-first-review-section
+            product_name={name}
+            onopenmodal={openAddReviewModal}
+          ></c-product-page-first-review-section>
+        </lightning-layout-item>
+      </template>
+      <template lwc:else>
+        <lightning-layout-item size="12" class="slds-var-m-top_large">
+          <c-product-page-reviews-section
+            reviews={reviewsList}
+            onopenmodal={openAddReviewModal}
+          ></c-product-page-reviews-section>
+        </lightning-layout-item>
+      </template>
+
+      <c-add-new-review-modal
+        if:true={isAddReviewModalVisible}
+        product_id={productId}
+        product_name={name}
+        img_url={imageUrl}
+        rating_from_first_review={firstReviewValue}
+        onclosemodal={closeAddReviewModal}
+      ></c-add-new-review-modal>
+    </template>
+  </lightning-layout>
+</template>

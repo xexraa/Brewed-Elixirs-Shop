@@ -1,0 +1,25 @@
+<template>
+  <lightning-layout
+    multiple-rows
+    class="card-container"
+    onclick={handleTileClick}
+    data-value={subcategory.name}
+  >
+    <lightning-layout-item
+      size="12"
+      class="slds-align_absolute-center"
+      padding="around-small"
+    >
+      <div class="image-container">
+        <img src={iconName} alt="Item Image" />
+      </div>
+    </lightning-layout-item>
+    <lightning-layout-item
+      size="12"
+      class="slds-text-align_center"
+      padding="around-small"
+    >
+      <b class="slds-text-heading_small">{subcategory.name}</b>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

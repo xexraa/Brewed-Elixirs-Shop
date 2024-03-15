@@ -1,0 +1,22 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout
+    multiple-rows
+    class="slds-var-p-top_large slds-var-m-horizontal_xx-large"
+  >
+    <!-- Category name -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_large">
+      <p class="slds-text-heading_large">{category}</p>
+    </lightning-layout-item>
+
+    <!-- Categories component -->
+    <lightning-layout-item size="3" class="slds-var-m-right_medium">
+      <c-categories-menu-card category={category}></c-categories-menu-card>
+    </lightning-layout-item>
+
+    <!-- Products categories list  -->
+    <lightning-layout-item size="8" class="slds-var-m-left_medium">
+      <c-categories-list-card category={category}></c-categories-list-card>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

@@ -1,0 +1,42 @@
+<template>
+  <lightning-layout
+    multiple-rows
+    class="slds-var-p-top_large slds-var-m-horizontal_xx-large"
+  >
+    <template lwc:if={isLoading}>
+      <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <c-spinner size="medium"></c-spinner>
+      </lightning-layout-item>
+    </template>
+    <template lwc:else>
+      <!-- Search query -->
+      <lightning-layout-item size="12" class="slds-var-p-bottom_large">
+        <p class="slds-text-heading_large">
+          {searchQuery}&nbsp;
+          <span class="slds-text-body_regular slds-text-color_weak">
+            ({countProducts} {label.LABEL_Results})
+          </span>
+        </p>
+      </lightning-layout-item>
+
+      <!-- Filter component -->
+      <lightning-layout-item size="3" class="slds-var-m-right_medium">
+        <c-products-filter-menu-card
+          lwc:if={isProductsListNotEmpty}
+          onpricerangechange={handlePriceChange}
+          products={products}
+        ></c-products-filter-menu-card>
+      </lightning-layout-item>
+
+      <!-- Products list component -->
+      <lightning-layout-item size="8" class="slds-var-m-left_medium">
+        <template lwc:if={isProductsEmpty}>
+          <c-products-list-card products={products}></c-products-list-card>
+        </template>
+        <template lwc:else>
+          <b class="slds-text-heading_large">{label.LABEL_NoResult}</b>
+        </template>
+      </lightning-layout-item>
+    </template>
+  </lightning-layout>
+</template>

@@ -1,0 +1,69 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-layout multiple-rows class="slds-box">
+    <!-- Title -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_large">
+      <b class="slds-text-heading_large">{label.LABEL_Filters}</b>
+    </lightning-layout-item>
+
+    <!-- Producer section -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+      <lightning-layout multiple-rows lwc:if={isCategory}>
+        <lightning-layout-item size="12" class="slds-var-p-bottom_small">
+          <b class="slds-text-heading_small">{label.LABEL_Producer}</b>
+        </lightning-layout-item>
+        <template for:each={productsCountList} for:item="item">
+          <lightning-layout-item key={item.mark} size="12">
+            <div
+              class="category-item"
+              data-value={item.mark}
+              onclick={handleCategoryClick}
+            >
+              <input type="checkbox" class="category-checkbox" />
+              <span class="category-label">
+                {item.mark}&nbsp;
+                <span class="slds-text-color_weak">({item.count})</span>
+              </span>
+            </div>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </lightning-layout-item>
+
+    <!-- Price section -->
+    <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+      <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" class="slds-var-p-bottom_small">
+          <b class="slds-text-heading_small">{label.LABEL_Price}</b>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+          <div class="price-input-container">
+            <input
+              type="number"
+              data-name="priceFrom"
+              placeholder={label.LABEL_From}
+              value={priceFrom}
+              onchange={handlePriceChange}
+              class={dynamicPriceClass}
+              min="0"
+            />
+            <span
+              class="slds-text-color_weak slds-text-heading_large slds-var-p-horizontal_small"
+            >
+              -
+            </span>
+            <input
+              type="number"
+              data-name="priceTo"
+              placeholder={label.LABEL_To}
+              value={priceTo}
+              onchange={handlePriceChange}
+              class={dynamicPriceClass}
+              min="0"
+            />
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

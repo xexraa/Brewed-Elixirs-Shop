@@ -1,0 +1,82 @@
+<template>
+  <lightning-layout class="slds-box custom-box">
+    <lightning-layout-item size="12">
+      <lightning-layout>
+        <!-- Left section -->
+        <lightning-layout-item
+          class="left_container-bg"
+          padding="around-large"
+          size="3"
+        >
+          <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" class="slds-var-p-bottom_medium">
+              <b class="slds-text-heading_medium">{status}</b>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+              <p>{boughtDate}</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+              <p class="slds-text-color_weak">{nr_label} {orderNr}</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-var-p-top_small">
+              <b class="slds-text-heading_small">
+                {totalAmount} {currencyIsoCode}
+              </b>
+            </lightning-layout-item>
+          </lightning-layout>
+        </lightning-layout-item>
+
+        <!-- Right section -->
+        <lightning-layout-item size="9" class="centered-container">
+          <lightning-layout multiple-rows>
+            <template iterator:it={orderItems} lwc:if={isOrderItemsEmpty}>
+              <lightning-layout-item
+                key={it.value.Id}
+                size="12"
+                class="slds-var-p-horizontal_large"
+              >
+                <lightning-layout
+                  if:false={it.last}
+                  class="slds-border_bottom slds-text-heading_small slds-var-p-top_medium slds-var-p-bottom_x-small slds-var-p-horizontal_medium slds-text-align_left"
+                >
+                  <lightning-layout-item size="8">
+                    <p>{it.value.Product2.Name}</p>
+                  </lightning-layout-item>
+
+                  <lightning-layout-item size="3">
+                    <p class="slds-var-p-horizontal_xx-large">
+                      {it.value.UnitPrice} {currencyIsoCode}
+                    </p>
+                  </lightning-layout-item>
+
+                  <lightning-layout-item size="1">
+                    <b>{it.value.Quantity}</b>
+                  </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout
+                  lwc:if={it.last}
+                  class="slds-text-heading_small slds-var-p-top_medium slds-var-p-bottom_x-small slds-var-p-horizontal_medium slds-text-align_left"
+                >
+                  <lightning-layout-item size="8">
+                    <p>{it.value.Product2.Name}</p>
+                  </lightning-layout-item>
+
+                  <lightning-layout-item size="3">
+                    <p class="slds-var-p-horizontal_xx-large">
+                      {it.value.UnitPrice} {currencyIsoCode}
+                    </p>
+                  </lightning-layout-item>
+
+                  <lightning-layout-item size="1">
+                    <b>{it.value.Quantity}</b>
+                  </lightning-layout-item>
+                </lightning-layout>
+              </lightning-layout-item>
+            </template>
+          </lightning-layout>
+        </lightning-layout-item>
+      </lightning-layout>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>
