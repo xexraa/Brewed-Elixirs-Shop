@@ -56,18 +56,10 @@ public with sharing class OrderService {
     }
 
     public static void updateOrderStatus(Order order) {
-        try {
-            update order;
-        } catch (Exception e) {
-            throw new AuraException(e.getMessage());
-        }
+        update order;
     }
 
     public static void deleteDraftOrder(Id orderId) {
-        try {
-            delete [SELECT Id FROM Order WHERE Id = :orderId WITH SECURITY_ENFORCED LIMIT 1];
-        } catch (Exception e) {
-            throw new AuraException(e.getMessage());
-        }      
+        delete [SELECT Id FROM Order WHERE Id = :orderId WITH SECURITY_ENFORCED LIMIT 1];   
     }
 }

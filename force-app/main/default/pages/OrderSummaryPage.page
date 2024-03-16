@@ -63,7 +63,7 @@
         <tr>
             <td class="left-div">
                 <div>
-                    <p><span class="heading">{!$Label.LABEL_Order}</span> {!$Label.SHORTCUT_Nr} {!orderId}</p>
+                    <p><span class="heading">{!$Label.LABEL_Order}</span> {!$Label.SHORTCUT_Nr} {!orderNumber}</p>
                     <p style="margin-top: -15px;">{!$Label.SHORTCUT_Of} <span style="font-size: 16px">{!startDate}</span></p>
                 </div>
             </td>
@@ -101,7 +101,7 @@
         <tr>
             <td class="left-div">
                 <div>
-                    <p>{!$Label.LABEL_CustomerNumber}: <b>{!contactId}</b></p>
+                    <p>{!$Label.LABEL_CustomerNumber}: <b>{!customerNumber}</b></p>
                 </div>
             </td>
         </tr>

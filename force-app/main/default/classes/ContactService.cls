@@ -7,23 +7,15 @@ public with sharing class ContactService {
     }
 
     public static Contact getContactById(Id contactId) {
-        return [SELECT FirstName, LastName, Email, Phone, MailingStreet, MailingPostalCode, MailingCity FROM Contact WHERE Id = :contactId LIMIT 1];
+        return [SELECT FirstName, LastName, Email, Phone, MailingStreet, MailingPostalCode, MailingCity, CustomerNumber__c FROM Contact WHERE Id = :contactId LIMIT 1];
     }
 
     public static void updateUserInfo(Contact userInfo) {
-        try {
-            update userInfo;
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
+        update userInfo;
     }
 
     public static void updateUserAddress(Contact userData) {
-        try {
-            update userData;
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
+        update userData;
     }
 
     public static Id getAccountId(Id contactId) {

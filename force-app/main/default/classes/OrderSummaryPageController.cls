@@ -1,6 +1,7 @@
 public with sharing class OrderSummaryPageController {
 
     public Id orderId { get; set; }
+    public String orderNumber { get; set; }
     public String startDate { get; set; }
     public String totalAmount { get; set; }
     public String currencyIsoCode { get; set; }
@@ -9,13 +10,14 @@ public with sharing class OrderSummaryPageController {
     public String street { get; set; }
     public String postCode { get; set; }
     public String city { get; set; }
-    public Id contactId { get; set; }
+    public String customerNumber { get; set; }
     public List<OrderItem> orderItemsList { get; set; }
 
     public OrderSummaryPageController() {
         Map<String, String> pageParameters = ApexPages.currentPage().getParameters();
 
         orderId = pageParameters.get('orderId');
+        orderNumber = pageParameters.get('orderNumber');
         startDate = pageParameters.get('startDate');
         totalAmount = pageParameters.get('totalAmount');
         currencyIsoCode = pageParameters.get('currencyIsoCode');
@@ -24,7 +26,7 @@ public with sharing class OrderSummaryPageController {
         street = pageParameters.get('street');
         postCode = pageParameters.get('postCode');
         city = pageParameters.get('city');
-        contactId = pageParameters.get('contactId');
+        customerNumber = pageParameters.get('customerNumber');
 
         fetchProducts();
     }

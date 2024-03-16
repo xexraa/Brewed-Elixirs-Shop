@@ -1,3 +1,4 @@
+@isTest
 public class Constants {
     
     public static final String ORDER_STATUS_DRAFT = 'Draft';

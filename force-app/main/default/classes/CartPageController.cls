@@ -2,26 +2,46 @@ public with sharing class CartPageController {
 
     @AuraEnabled(Cacheable=true)
     public static Map<Id, List<OrderItemService.OrderItemWrapper>> getDraftOrder() {
-        return OrderService.getDraftOrder();
+        try {
+            return OrderService.getDraftOrder();
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled
     public static void deleteDraftOrder(Id orderId) {
-        OrderService.deleteDraftOrder(orderId);
+        try {
+            OrderService.deleteDraftOrder(orderId);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled
     public static void deleteOrderItem(Id orderItemId) {
-        OrderItemService.deleteOrderItem(orderItemId);
+        try {
+            OrderItemService.deleteOrderItem(orderItemId);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled
     public static void updateOrderItemQuantity(Id orderItemId, Decimal quantity) {
-        OrderItemService.updateOrderItemQuantity(orderItemId, quantity);
+        try {
+            OrderItemService.updateOrderItemQuantity(orderItemId, quantity);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 
     @AuraEnabled
     public static void updateOrderStatus(Order order) {
-        OrderService.updateOrderStatus(order);
+        try {
+            OrderService.updateOrderStatus(order);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
     }
 }

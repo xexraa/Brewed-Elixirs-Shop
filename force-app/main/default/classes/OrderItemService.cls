@@ -36,19 +36,11 @@ public with sharing class OrderItemService {
 
     public static void updateOrderItemQuantity(Id orderItemId, Decimal quantity) {
         OrderItem orderItemToUpdate = createOrderItemToUpdate(orderItemId, quantity);
-        try {
-            update orderItemToUpdate;
-        } catch (Exception e) {
-            throw new AuraException(e.getMessage());
-        }
+        update orderItemToUpdate;
     }
 
     public static void deleteOrderItem(Id orderItemId) {
-        try {
-            delete [SELECT Id FROM OrderItem WHERE Id = :orderItemId WITH SECURITY_ENFORCED LIMIT 1];
-        } catch (Exception e) {
-            throw new AuraException(e.getMessage());
-        }  
+        delete [SELECT Id FROM OrderItem WHERE Id = :orderItemId WITH SECURITY_ENFORCED LIMIT 1];
     }
 
     private static OrderItem createOrderItem(Id orderId, Id productId, Integer quantity, Decimal price) {

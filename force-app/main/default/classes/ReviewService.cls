@@ -1,11 +1,7 @@
 public with sharing class ReviewService {
     
     public static void addReview(Review__c review) {
-        try {
-            insert review;
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
+        insert review;
     }
 
     public static List<ReviewForProductWrapper> getReviewsForProduct(Id productId) {

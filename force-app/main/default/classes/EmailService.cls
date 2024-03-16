@@ -45,6 +45,7 @@ public with sharing class EmailService {
     private static Blob getOrderSummaryPageBlob(Order order, Contact con) {
         PageReference pdfPage = Page.OrderSummaryPage;
         pdfPage.getParameters().put('orderId', order.Id);
+        pdfPage.getParameters().put('orderNumber', String.valueOf(order.OrderNumber));
         pdfPage.getParameters().put('startDate', String.valueOf(order.EffectiveDate));
         pdfPage.getParameters().put('totalAmount', String.valueOf(order.TotalAmount));
         pdfPage.getParameters().put('currencyIsoCode', String.valueOf(order.CurrencyIsoCode));
@@ -53,7 +54,7 @@ public with sharing class EmailService {
         pdfPage.getParameters().put('street', String.valueOf(con.MailingStreet));
         pdfPage.getParameters().put('postCode', String.valueOf(con.MailingPostalCode));
         pdfPage.getParameters().put('city', String.valueOf(con.MailingCity));
-        pdfPage.getParameters().put('contactId', con.Id);
+        pdfPage.getParameters().put('customerNumber', String.valueOf(con.CustomerNumber__c));
 
         Blob pdfBlob = pdfPage.getContentAsPDF();
         return pdfBlob;
